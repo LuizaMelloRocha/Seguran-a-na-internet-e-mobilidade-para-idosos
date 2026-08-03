@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conectividade Segura - Guia Digital para a Terceira Idade</title>
+    
+    <style>
+        /* --- ESTILOS GERAIS --- */
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 18px; /* Fonte maior para facilitar a leitura */
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f6f9;
+            color: #333;
+        }
+
+        /* --- CABEÇALHO --- */
+        header {
+            background-color: #1a5276;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.2rem;
+        }
+
+        /* --- MENU DE NAVEGAÇÃO --- */
+        nav {
+            background-color: #2980b9;
+        }
+
+        /* Menu para telas grandes */
+        .menu-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .menu-list li a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 15px 25px;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .menu-list li a:hover {
+            background-color: #1b4f72;
+        }
+
+        /* Botão do menu celular/interativo */
+        .menu-toggle {
+            display: none;
+            background-color: #1b4f72;
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            font-size: 1.2rem;
+            width: 100%;
+            text-align: left;
+            cursor: pointer;
+        }
+
+        /* --- CONTEÚDO PRINCIPAL --- */
+        main {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .card {
+            margin-bottom: 30px;
+        }
+
+        /* Imagens Responsivas */
+        .img-destaque {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        /* --- RODAPÉ --- */
+        footer {
+            background-color: #1a5276;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+
+        /* --- RESPONSIVIDADE (Celulares e Tablets) --- */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block; /* Exibe o botão no celular */
+            }
+
+            .menu-list {
+                display: none; /* Esconde o menu por padrão no celular */
+                flex-direction: column;
+            }
+
+            /* Classe ativada pelo JavaScript para abrir o menu */
+            .menu-list.active {
+                display: flex;
+            }
+
+            .menu-list li a {
+                border-top: 1px solid #3498db;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Conectividade Segura</h1>
+        <p>Sua navegação na internet de forma fácil, livre e sem riscos.</p>
+    </header>
+
+    <nav>
+        <button class="menu-toggle" id="btn-menu">☰ Menu de Opções</button>
+        <ul class="menu-list" id="menu-lista">
+            <li><a href="#inicio">Início</a></li>
+            <li><a href="#dicas">Dicas de Segurança</a></li>
+            <li><a href="#mobilidade">Mobilidade Digital</a></li>
+            <li><a href="#contato">Contato</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="inicio" class="card">
+            <h2>Bem-vindo ao Conectividade Segura!</h2>
+            <p>A tecnologia existe para facilitar a nossa vida. Aqui você aprende a usar o celular e o computador com tranquilidade, aproveitando o melhor do mundo digital sem perigos.</p>
+            
+            <img class="img-destaque" src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=800" alt="Idoso sorrindo usando um computador portátil com facilidade">
+        </section>
+
+        <hr>
+
+        <section id="dicas" class="card">
+            <h2>Dicas Essenciais de Segurança</h2>
+            <ul>
+                <li><strong>Cuidado com mensagens suspeitas:</strong> O banco nunca pede sua senha por SMS ou WhatsApp.</li>
+                <li><strong>Senhas Fortes:</strong> Misture letras, números e símbolos nas suas senhas.</li>
+                <li><strong>Não clique em qualquer link:</strong> Na dúvida, pergunte a alguém de confiança antes de acessar um site desconhecido.</li>
+            </ul>
+            
+            <img class="img-destaque" src="https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=800" alt="Conceito de segurança digital com cadeado virtual em um tela">
+        </section>
+
+        <hr>
+
+        <section id="mobilidade" class="card">
+            <h2>Mobilidade Digital no Dia a Dia</h2>
+            <p>Usar aplicativos de transporte, fazer pagamentos via Pix e falar com a família por vídeo ajuda a ter muito mais autonomia e facilidade no cotidiano.</p>
+        </section>
+    </main>
+
+    <footer id="contato">
+        <p><strong>Conectividade Segura</strong> — Projeto de Inclusão Digital</p>
+        <p>Dúvidas ou sugestões? Entre em contato pelo e-mail: <em>contato@conectividadesegura.org</em></p>
+        <p>&copy; 2026 - Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        // Seleciona o botão e a lista do menu
+        const btnMenu = document.getElementById('btn-menu');
+        const menuLista = document.getElementById('menu-lista');
+
+        // Adiciona o evento de clique no botão do menu celular
+        btnMenu.addEventListener('click', function() {
+            // Alterna a classe 'active' para mostrar ou esconder o menu
+            menuLista.classList.toggle('active');
+        });
+    </script>
+
+</body>
+</html>
