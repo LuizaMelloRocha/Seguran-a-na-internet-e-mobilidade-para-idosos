@@ -3,194 +3,455 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Conectividade Segura - Guia Digital para a Terceira Idade</title>
-    
+
     <style>
-        /* --- ESTILOS GERAIS --- */
-        body {
-            font-family: Arial, sans-serif;
-            font-size: 18px; /* Fonte maior para facilitar a leitura */
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f6f9;
-            color: #333;
+        :root {
+            --lilas-principal: #6d3fa9;
+            --lilas-escuro: #4b2375;
+            --lilas-claro: #eee4fa;
+            --lilas-detalhe: #c9a9ed;
+
+            --fundo: #ffffff;
+            --fundo-secundario: #f7f3fb;
+            --texto: #252525;
+            --texto-secundario: #4a4a4a;
+
+            --borda: #d9c8eb;
+            --sombra: rgba(70, 35, 100, 0.15);
         }
 
-        /* --- CABEÇALHO --- */
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 18px;
+            line-height: 1.7;
+            background-color: var(--fundo);
+            color: var(--texto);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        a {
+            color: var(--lilas-escuro);
+        }
+
+        a:focus,
+        button:focus {
+            outline: 4px solid #ffbf47;
+            outline-offset: 3px;
+        }
+
+        /* MODO ESCURO */
+
+        body.dark-mode {
+            --fundo: #17131c;
+            --fundo-secundario: #241d2d;
+            --texto: #f7f2fc;
+            --texto-secundario: #e3d9eb;
+
+            --lilas-principal: #a875df;
+            --lilas-escuro: #c79aef;
+            --lilas-claro: #342843;
+
+            --borda: #684c7d;
+            --sombra: rgba(0, 0, 0, 0.5);
+        }
+
+        /* ALTO CONTRASTE */
+
+        body.high-contrast {
+            --fundo: #000000;
+            --fundo-secundario: #000000;
+            --texto: #ffffff;
+            --texto-secundario: #ffffff;
+
+            --lilas-principal: #ffff00;
+            --lilas-escuro: #ffff00;
+            --lilas-claro: #000000;
+
+            --borda: #ffffff;
+            --sombra: none;
+        }
+
+        body.high-contrast header,
+        body.high-contrast nav,
+        body.high-contrast footer {
+            background: #000000;
+            border-color: #ffffff;
+        }
+
+        body.high-contrast .card,
+        body.high-contrast .solucao,
+        body.high-contrast .accessibility-panel {
+            border: 2px solid white;
+        }
+
+        /* CABEÇALHO */
+
         header {
-            background-color: #5c258d;
+            background: linear-gradient(
+                135deg,
+                var(--lilas-principal),
+                var(--lilas-escuro)
+            );
+
             color: white;
-            padding: 20px;
+            padding: 35px 20px;
             text-align: center;
         }
 
         header h1 {
             margin: 0;
-            font-size: 2.2rem;
+            font-size: 2.5rem;
+            line-height: 1.2;
         }
 
-        /* --- MENU DE NAVEGAÇÃO --- */
+        header p {
+            margin: 12px auto 0;
+            max-width: 800px;
+            font-size: 1.15rem;
+        }
+
+        /* ACESSIBILIDADE */
+
+        .accessibility-panel {
+            background: var(--fundo-secundario);
+            padding: 15px 20px;
+            border-bottom: 1px solid var(--borda);
+            text-align: center;
+        }
+
+        .accessibility-panel strong {
+            display: block;
+            margin-bottom: 10px;
+            color: var(--lilas-escuro);
+        }
+
+        .accessibility-buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .accessibility-buttons button {
+            background: var(--fundo);
+            color: var(--texto);
+            border: 2px solid var(--lilas-principal);
+            border-radius: 8px;
+            padding: 10px 15px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .accessibility-buttons button:hover {
+            background: var(--lilas-claro);
+        }
+
+        /* MENU */
+
         nav {
-            background-color: #4e2d87;
+            background-color: var(--lilas-escuro);
         }
 
-        /* Menu para telas grandes */
         .menu-list {
             list-style: none;
             margin: 0;
             padding: 0;
+
             display: flex;
             justify-content: center;
+            align-items: stretch;
+            flex-wrap: wrap;
         }
 
         .menu-list li a {
             display: block;
             color: white;
             text-decoration: none;
-            padding: 15px 25px;
+            padding: 15px 22px;
             font-weight: bold;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
+            border-bottom: 4px solid transparent;
         }
 
         .menu-list li a:hover {
-            background-color: #50248a;
+            background-color: var(--lilas-principal);
+            border-bottom-color: #ffffff;
         }
 
-        /* Botão do menu celular/interativo */
         .menu-toggle {
             display: none;
-            background-color: #4f1b72;
+            width: 100%;
+            background-color: var(--lilas-escuro);
             color: white;
             border: none;
             padding: 15px 20px;
             font-size: 1.2rem;
-            width: 100%;
             text-align: left;
             cursor: pointer;
         }
 
-        /* --- CONTEÚDO PRINCIPAL --- */
+        /* CONTEÚDO */
+
         main {
-            max-width: 900px;
-            margin: 20px auto;
-            padding: 20px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 0 20px;
         }
 
         .card {
-            margin-bottom: 30px;
+            background: var(--fundo);
+            margin-bottom: 35px;
+            padding: 30px;
+            border-radius: 14px;
+            border: 1px solid var(--borda);
+            box-shadow: 0 4px 15px var(--sombra);
         }
 
-        /* Imagens Responsivas */
-        .img-destaque {
-            width: 100%;
-            max-height: 400px;
-            object-fit: cover;
+        .card h2 {
+            margin-top: 0;
+            color: var(--lilas-principal);
+            font-size: 2rem;
+        }
+
+        .card h3 {
+            color: var(--lilas-escuro);
+            font-size: 1.35rem;
+        }
+
+        .card p {
+            color: var(--texto);
+        }
+
+        .card ul {
+            padding-left: 30px;
+        }
+
+        .card li {
+            margin-bottom: 12px;
+        }
+
+        /* AVISOS */
+
+        .aviso {
+            background: var(--lilas-claro);
+            border-left: 6px solid var(--lilas-principal);
+            padding: 20px;
+            margin: 20px 0;
             border-radius: 8px;
-            margin: 15px 0;
         }
 
-        /* --- RODAPÉ --- */
+        .aviso strong {
+            color: var(--lilas-escuro);
+        }
+
+        /* CARDS */
+
+        .solucoes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .solucao {
+            background: var(--fundo-secundario);
+            padding: 22px;
+            border-radius: 12px;
+            border-left: 6px solid var(--lilas-principal);
+        }
+
+        .solucao h3 {
+            margin-top: 0;
+            color: var(--lilas-principal);
+        }
+
+        /* BOTÃO DE LEITURA */
+
+        .leitura {
+            margin-top: 20px;
+            background: var(--lilas-principal);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 12px 18px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .leitura:hover {
+            background: var(--lilas-escuro);
+        }
+
+        /* RODAPÉ */
+
         footer {
-            background-color: #541a76;
+            background-color: var(--lilas-escuro);
             color: white;
             text-align: center;
-            padding: 20px;
-            margin-top: 40px;
+            padding: 35px 20px;
+            margin-top: 50px;
+        }
+
+        footer h2 {
+            margin-top: 0;
+            font-size: 1.5rem;
         }
 
         footer p {
-            margin: 5px 0;
+            margin: 7px 0;
         }
 
-        /* --- RESPONSIVIDADE (Celulares e Tablets) --- */
+        footer a {
+            color: white;
+            font-weight: bold;
+        }
+
+        /* RESPONSIVIDADE */
+
         @media (max-width: 768px) {
+
+            body {
+                font-size: 17px;
+            }
+
+            header h1 {
+                font-size: 2rem;
+            }
+
             .menu-toggle {
-                display: block; /* Exibe o botão no celular */
+                display: block;
             }
 
             .menu-list {
-                display: none; /* Esconde o menu por padrão no celular */
+                display: none;
                 flex-direction: column;
             }
 
-            /* Classe ativada pelo JavaScript para abrir o menu */
             .menu-list.active {
                 display: flex;
             }
 
             .menu-list li a {
-                border-top: 1px solid #b65bf3;
+                border-top: 1px solid var(--lilas-detalhe);
+                padding: 15px 20px;
+            }
+
+            .card {
+                padding: 22px;
+            }
+
+            .card h2 {
+                font-size: 1.7rem;
+            }
+
+            .accessibility-buttons {
+                flex-direction: column;
+            }
+
+            .accessibility-buttons button {
+                width: 100%;
+                max-width: 350px;
             }
         }
     </style>
 </head>
+
 <body>
 
-    <header>
+    <!-- CABEÇALHO -->
+
+    <header id="inicio">
+
         <h1>Conectividade Segura</h1>
-        <p>Sua navegação na internet de forma fácil, livre e sem riscos.</p>
+
+        <p>
+            Orientação, acessibilidade e segurança no mundo digital
+            para pessoas idosas.
+        </p>
+
     </header>
 
-    <nav>
-        <button class="menu-toggle" id="btn-menu">☰ Menu de Opções</button>
-        <ul class="menu-list" id="menu-lista">
-            <li><a href="#inicio">Início</a></li>
-            <li><a href="#dicas">Dicas de Segurança</a></li>
-            <li><a href="#mobilidade">Mobilidade Digital</a></li>
-            <li><a href="#contato">Contato</a></li>
-        </ul>
-    </nav>
 
-    <main>
-        <section id="inicio" class="card">
-            <h2>Bem-vindo ao Conectividade Segura!</h2>
-            <p>A tecnologia existe para facilitar a nossa vida. Aqui você aprende a usar o celular e o computador com tranquilidade, aproveitando o melhor do mundo digital sem perigos.</p>
-            
-            <img class="img-destaque" src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=800" alt="Idoso sorrindo usando um computador portátil com facilidade">
-        </section>
+    <!-- ACESSIBILIDADE -->
 
-        <hr>
+    <section
+        class="accessibility-panel"
+        aria-label="Ferramentas de acessibilidade">
 
-        <section id="dicas" class="card">
-            <h2>Dicas Essenciais de Segurança</h2>
-            <ul>
-                <li><strong>Cuidado com mensagens suspeitas:</strong> O banco nunca pede sua senha por SMS ou WhatsApp.</li>
-                <li><strong>Senhas Fortes:</strong> Misture letras, números e símbolos nas suas senhas.</li>
-                <li><strong>Não clique em qualquer link:</strong> Na dúvida, pergunte a alguém de confiança antes de acessar um site desconhecido.</li>
-            </ul>
-            
-            <img class="img-destaque" src="https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=800" alt="Conceito de segurança digital com cadeado virtual em um tela">
-        </section>
+        <strong>
+            ♿ Recursos de acessibilidade
+        </strong>
 
-        <hr>
+        <div class="accessibility-buttons">
 
-        <section id="mobilidade" class="card">
-            <h2>Mobilidade Digital no Dia a Dia</h2>
-            <p>Usar aplicativos de transporte, fazer pagamentos via Pix e falar com a família por vídeo ajuda a ter muito mais autonomia e facilidade no cotidiano.</p>
-        </section>
-    </main>
+            <button
+                id="aumentarFonte"
+                type="button">
+                🔍 Aumentar fonte
+            </button>
 
-    <footer id="contato">
-        <p><strong>Conectividade Segura</strong> — Projeto de Inclusão Digital</p>
-        <p>Dúvidas ou sugestões? Entre em contato pelo e-mail: <em>luiza.mello.rocha@escola.pr.gov.br</em></p>
-        <p>&copy; 2026 - Todos os direitos reservados.</p>
-    </footer>
+            <button
+                id="diminuirFonte"
+                type="button">
+                🔎 Diminuir fonte
+            </button>
 
-    <script>
-        // Seleciona o botão e a lista do menu
-        const btnMenu = document.getElementById('btn-menu');
-        const menuLista = document.getElementById('menu-lista');
+            <button
+                id="modoEscuro"
+                type="button">
+                🌙 Modo escuro
+            </button>
 
-        // Adiciona o evento de clique no botão do menu celular
-        btnMenu.addEventListener('click', function() {
-            // Alterna a classe 'active' para mostrar ou esconder o menu
-            menuLista.classList.toggle('active');
-        });
-    </script>
+            <button
+                id="altoContraste"
+                type="button">
+                ⚫ Alto contraste
+            </button>
 
-</body>
-</html>
+            <button
+                id="restaurar"
+                type="button">
+                ↺ Restaurar
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- MENU -->
+
+    <nav aria-label="Menu principal">
+
+        <button
+            class="menu-toggle"
+            id="menuToggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="menuList">
+
+            ☰ Menu
+
+        </button>
+
+        <
