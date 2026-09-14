@@ -1,0 +1,123 @@
+:root {
+    --bg-color: #f4f4f9;
+    --text-color: #333333;
+    --card-bg: #ffffff;
+    --primary-color: #0056b3;
+    --border-color: #cccccc;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+/* Modos de Acessibilidade */
+body.dark-mode {
+    --bg-color: #121212;
+    --text-color: #ffffff;
+    --card-bg: #1e1e1e;
+    --border-color: #444444;
+}
+
+body.high-contrast {
+    --bg-color: #000000;
+    --text-color: #ffff00;
+    --card-bg: #000000;
+    --border-color: #ffff00;
+}
+
+header, footer {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.acessibilidade-bar {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 15px 0;
+}
+
+button {
+    padding: 10px 15px;
+    font-size: 1rem;
+    cursor: pointer;
+    border: 2px solid var(--border-color);
+    border-radius: 5px;
+    background-color: var(--card-bg);
+    color: var(--text-color);
+}
+
+button:focus-visible {
+    outline: 3px solid #ffbf00;
+}
+
+/* Navegação */
+nav {
+    margin-bottom: 20px;
+}
+
+.menu-toggle {
+    width: 100%;
+}
+
+.menu-list {
+    display: none;
+    list-style: none;
+    padding: 0;
+}
+
+.menu-list.active {
+    display: block;
+}
+
+.menu-list li {
+    margin: 5px 0;
+}
+
+.menu-list a {
+    color: var(--text-color);
+    text-decoration: none;
+    display: block;
+    padding: 8px;
+    border: 1px solid var(--border-color);
+}
+
+/* Conteúdo */
+.card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.imagem-destaque {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.aviso {
+    background-color: rgba(0, 123, 255, 0.1);
+    border-left: 4px solid var(--primary-color);
+    padding: 10px 15px;
+    margin-top: 15px;
+}
+
+/* Quiz */
+.pergunta {
+    margin-bottom: 15px;
+}
+
+.resultado-oculto {
+    margin-top: 15px;
+    padding: 10px;
+    font-weight: bold;
+}
